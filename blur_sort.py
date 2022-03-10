@@ -9,9 +9,12 @@ import cv2
 FOCUS_THRESHOLD = 80
 BLURRED_DIR = 'blurred'
 OK_DIR = 'ok'
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+print(CURR_DIR)
 
 blur_count = 0
-files = [f for f in os.listdir('.') if f.endswith('.jpg')]
+files = [f for f in CURR_DIR if f.endswith('.jpg')]
+print('Found %d files.' % files.count)
 
 try:
     os.makedirs(BLURRED_DIR)
@@ -21,6 +24,7 @@ except:
 
 for infile in files:
 
+    print(os.listdir('.'))
     print('Processing file %s ...' % infile)
     cv_image = cv2.imread(infile)
 
